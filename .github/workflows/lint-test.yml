@@ -15,6 +15,13 @@ jobs:
         with:
           node-version: 'lts/*'
           cache: 'npm'
+      - name: Setup Develocity for npm
+        uses: Duhemm/develocity-actions/setup-npm@5ebf395ea37fadfab15c6508f9d6018b441e4f5b
+        with:
+          develocity-url: https://dv-helm-standalone-unstable-main.grdev.net
+          develocity-access-key: ${{ secrets.DEVELOCITY_ACCESS_KEY }}
+          develocity-injection-enabled: true
+          develocity-npm-agent-url-override: https://develocity-npm-pkgs.grdev.net/gradle-develocity-agent-3.0.0-branch-main-20251113145013.tgz
       - name: Install dependencies
         run: npm install
       - name: Run Lint
